@@ -1,0 +1,16 @@
+package com.example.mareasv4.data
+
+data class Station(val id:String,val code:String,val puerto:String,val lat:String,val lon:String)
+data class StationEnvelope(val estaciones:StationList)
+data class StationList(val puertos:List<Station>)
+data class IhmEvent(val fecha:String?=null,val hora:String,val tipo:String,val altura:Double)
+data class IhmEventList(val marea:List<IhmEvent>)
+data class IhmTides(val id:Int?=null,val puerto:String,val lat:Double?=null,val lon:Double?=null,val fecha:String?=null,val datos:IhmEventList)
+data class IhmResponse(val mareas:IhmTides)
+data class TidePoint(val hour:Double,val height:Double)
+data class TideView(val station:String,val events:List<IhmEvent>,val curve:List<TidePoint>,val currentHeight:Double,val rising:Boolean,val next:IhmEvent?)
+data class WeatherResponse(val current:WeatherCurrent?)
+data class WeatherCurrent(val temperature_2m:Double?,val apparent_temperature:Double?,val relative_humidity_2m:Int?,val surface_pressure:Double?,val uv_index:Double?,val wind_speed_10m:Double?,val wind_gusts_10m:Double?)
+data class MarineResponse(val current:MarineCurrent?)
+data class MarineCurrent(val wave_height:Double?,val wave_period:Double?,val wave_direction:Double?,val swell_wave_height:Double?)
+data class AppData(val latitude:Double,val longitude:Double,val tide:TideView,val temperature:Double,val apparent:Double,val humidity:Int,val pressure:Double,val uv:Double,val wind:Double,val gusts:Double,val wave:Double,val wavePeriod:Double)
